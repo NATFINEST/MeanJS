@@ -1,0 +1,75 @@
+ <section data-ng-controller="CustomersUpdateController as customerUpCtrl">
+    <div class="modal-header">
+        <h3 class="modal-title">Update: {{customer.firstname}} {{customer.surname}}</h3>
+    </div>
+    <div class="modal-body">
+        <form name="updateCustomerForm">
+            <fieldset>
+                <div class="row">
+                    <div class="form-group">
+                        <div data-ng-show="error" class="text-center text-danger">
+                            <div class="alert alert-danger" role="alert">
+                                <strong data-ng-bind="error"></strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 text-center">
+                        <i class="glyphicon glyphicon-user cust-profile" ng-class="{'text-pink':customer.referred, 'text-danger':!customer.referred}"></i>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label text-muted" for="firstname">Firstname</label>
+                            <input type="text" data-ng-model="customer.firstname" id="firstname" class="form-control" d>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label text-muted" for="surname">Surname</label>
+                            <input type="text" data-ng-model="customer.surname" id="surname" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label text-muted" for="suburb">Suburb</label>
+                            <input type="text" data-ng-model="customer.suburb" id="suburb" class="form-control"  >
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-sm-push-6">
+                        <div class="form-group">
+                            <label class="control-label text-muted" for="phone">Phone</label>
+                            <input type="text" data-ng-model="customer.phone" id="phone" class="form-control"  >
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label text-muted" for="email">Email</label>
+                            <input type="text" data-ng-model="customer.email" id="email" class="form-control"  >
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-sm-pull-6">
+                        <div class="form-group">
+                            <label class="control-label text-muted" for="referred">Referred</label>
+                            <div class="controls">
+                                <input type="checkbox" data-ng-model="customer.referred" id="referred" class="form-control checkbox-left"  >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label text-muted" for="channel">Channel</label>
+                            <select data-ng-model="customer.channel" id="channel" class="form-control" ng-options="channel.item for channel in channelOptions">
+                                <option value="">--choose a channel option--</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label text-muted" for="industry">Industry</label>
+                            <input type="text" data-ng-model="customer.industry" id="industry" class="form-control" placeholder="Name"  >
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" ng-click="ok(updateCustomerForm.$valid)" ng-disabled="updateCustomerForm.$invalid">Update & Close</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</section>
